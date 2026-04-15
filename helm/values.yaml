@@ -1,0 +1,40 @@
+# Default values for llm-inference-chart.
+replicaCount: 2
+
+image:
+  repository: docker.io/frenoid/gemma4-e2b
+  tag: ollama-0.20.7
+  pullPolicy: IfNotPresent
+
+# Model metadata used for labels and identification
+model:
+  name: "gemma4"
+  size: "e2b"
+
+# Resource requests/limits are critical for CPU inference
+resources:
+  limits:
+    cpu: "8"
+    memory: "16Gi"
+  requests:
+    cpu: "4"
+    memory: "8Gi"
+
+service:
+  type: ClusterIP
+  port: 11434
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: "llm-inference"
+
+ingress:
+  enabled: false
+  className: "nginx"
+  annotations: {}
+  hosts:
+    - host: llm-gateway.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
