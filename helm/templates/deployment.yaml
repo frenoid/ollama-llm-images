@@ -33,3 +33,6 @@ spec:
           env:
             - name: OLLAMA_HOST
               value: "0.0.0.0"
+            {{- if .Values.extraEnv }}
+            {{- toYaml .Values.extraEnv | nindent 12 }}
+            {{- end }}

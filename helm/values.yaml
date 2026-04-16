@@ -29,6 +29,10 @@ serviceAccount:
   annotations: {}
   name: "llm-inference"
 
+extraEnv:
+  - name: "OLLAMA_KEEP_ALIVE"
+    value: "-1m"
+
 ingress:
   enabled: false
   className: "nginx"
