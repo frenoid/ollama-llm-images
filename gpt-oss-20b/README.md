@@ -1,4 +1,4 @@
-# Gemma4:26b
+# gpt-oss:20b
 To run the model on port 11434
 ```bash
 docker run -p11434:11434 docker.io/frenoid/gpt-oss-20b:ollama-0.21.0-amd64-nonroot
